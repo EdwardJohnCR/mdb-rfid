@@ -1,3 +1,4 @@
+                 
 import serial
 import os
 import time
@@ -45,7 +46,7 @@ import select
 # Function to read RFID
 def read_rfid():
     print2Console("Esperando lectura de RFID...")
-    device = evdev.InputDevice('/dev/input/eventX')  # Reemplaza X con el número correcto del dispositivo
+    device = evdev.InputDevice('/dev/input/event0')  # Reemplaza X con el n  mero correcto del dispositivo
     
     # Usamos select para esperar datos sin bloquear el dispositivo
     while True:
@@ -54,14 +55,9 @@ def read_rfid():
             for event in device.read():
                 if event.type == evdev.ecodes.EV_KEY and event.value == 1:  # Evento de tecla presionada
                     key_code = evdev.ecodes.KEY[event.code]
-                    return key_code  # Retorna el código de la tecla presionada
+                    return key_code  # Retorna el c  digo de la tecla presionada
         else:
             print2Console("Esperando lectura de RFID...")  # Seguimos esperando
-0011528212
-0011528212
-0011528212
-0011528212
-0011528212
 
 
 def initCashlessDevice():
@@ -90,7 +86,7 @@ if __name__ == '__main__':
 
             # Leer RFID en lugar de esperar la tecla 'v'
             rfid_code = read_rfid()
-            if rfid_code:  # Si se leyó un código RFID
+            if rfid_code:  # Si se ley   un c  digo RFID
                 write2Serial(AUTHORIZE_VEND + vendAmt)
                 print2Console("Waiting for product dispense...")
                 print2Console(f"Amount: {vendAmt}, Product ID: {prodId}")
@@ -108,3 +104,5 @@ if __name__ == '__main__':
             print2Console("Transaction finished.")
         else:
             continue
+
+
