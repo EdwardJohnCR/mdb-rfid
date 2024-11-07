@@ -57,11 +57,6 @@ def read_rfid():
                     return key_code  # Retorna el código de la tecla presionada
         else:
             print2Console("Esperando lectura de RFID...")  # Seguimos esperando
-0011528212
-0011528212
-0011528212
-0011528212
-0011528212
 
 
 def initCashlessDevice():
